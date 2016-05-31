@@ -12,18 +12,14 @@ class ImageList extends Component {
   renderedImages() {
     return IMAGES.map((image) => {
       return (
-        <li key={ image.title }>
-          <ImageDetail
-            title={ image.title }
-            link={ image.link } />
-        </li>
+        <ImageDetail key={ image.title } image={ image } />
       );
     });
   }
 
   render() {
     return (
-      <ul>
+      <ul className="media-listlist-group">
         { this.renderedImages() }
       </ul>
     );
