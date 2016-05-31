@@ -12,6 +12,7 @@ class ImageDetail extends Component {
             <h4 className="media-heading">
               { this.props.image.title }
             </h4>
+            <p>{ this.props.image.description }</p>
           </div>
       </li>
     );

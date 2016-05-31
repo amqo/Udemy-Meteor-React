@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
 import ImageDetail from './image_detail';
 
-const IMAGES = [
-  {title: 'Pen', link: 'http://dummyimage.com/600x400'},
-  {title: 'Pine Tree', link: 'http://dummyimage.com/600x400'},
-  {title: 'Mug', link: 'http://dummyimage.com/600x400'}
-];
-
 class ImageList extends Component {
 
   renderedImages() {
-    return IMAGES.map(image =>
-        <ImageDetail key={ image.title } image={ image } />
-    );
+    if (this.props.images) {
+      return this.props.images.map(image =>
+          <ImageDetail key={ image.id } image={ image } />
+      );
+    }
+    return <div>Loading images...</div>
   }
 
   render() {
     return (
-      <ul className="media-listlist-group">
+      <ul className="media-list list-group">
         { this.renderedImages() }
       </ul>
     );
