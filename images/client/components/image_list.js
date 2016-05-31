@@ -10,11 +10,9 @@ const IMAGES = [
 class ImageList extends Component {
 
   renderedImages() {
-    return IMAGES.map((image) => {
-      return (
+    return IMAGES.map(image =>
         <ImageDetail key={ image.title } image={ image } />
-      );
-    });
+    );
   }
 
   render() {
