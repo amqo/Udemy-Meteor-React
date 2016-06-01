@@ -12,7 +12,7 @@ const EmployeeList = ({ employees }) => {
   return (
     <div>
       <div className="employee-list">
-        <ul>{ employeesToShow }</ul>
+        { employeesToShow }
       </div>
     </div>
   );
