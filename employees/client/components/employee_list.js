@@ -3,6 +3,8 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Employees } from '../../imports/collections/employees';
 import EmployeeDetail from './employee_detail';
 
+const PER_PAGE = 20;
+
 const EmployeeList = ({ employees }) => {
 
   const employeesToShow = employees.map( employee =>
@@ -14,13 +16,18 @@ const EmployeeList = ({ employees }) => {
       <div className="employee-list">
         { employeesToShow }
       </div>
+      <button onClick={() => {
+          Meteor.subscribe('employees', PER_PAGE * 2);
+        }} className="btn btn-primary">
+        Load More ...
+      </button>
     </div>
   );
 };
 
 export default createContainer(() => {
   // Set up subscription
-  Meteor.subscribe('employees');
+  Meteor.subscribe('employees', PER_PAGE);
 
   // return and object, sent to EmployeeList as props
   return { employees: Employees.find({}).fetch() }
