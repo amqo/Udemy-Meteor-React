@@ -9,10 +9,22 @@ Meteor.startup(() => {
   });
 });
 
+// Executed when a user visits with a route like
+// 'localhost:3000/token'
+function onRoute(req, res, next) {
+  const token = req.params.token;
+  const link = Links.findOne({ token });
+  if (link) {
+    // 307 is the code for redirection
+    res.writeHead(307, { 'Location': link.url });
+    res.end();
+  } else {
+    next();
+  }
+}
+
 const middleware = ConnectRoute(function(router) {
-  router.get('/:token', (req) => {
-    console.log(req.params.token)
-  });
+  router.get('/:token', onRoute);
 });
 
 WebApp.connectHandlers.use(middleware);
