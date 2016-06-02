@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Header from './components/header';
 import LinkCreate from './components/link_create';
+import LinkList from './components/link_list';
 import { Links } from '../imports/collections/links';
 
 const App = () => {
@@ -10,6 +11,7 @@ const App = () => {
     <div>
       <Header />
       <LinkCreate />
+      <LinkList />
     </div>
   );
 }
