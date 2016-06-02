@@ -15,6 +15,9 @@ function onRoute(req, res, next) {
   const token = req.params.token;
   const link = Links.findOne({ token });
   if (link) {
+    // Increment the link counter
+    // No Meteor method needed as this code is already in the server side
+    Links.update(link, { $inc: { clicks: 1 }});
     // 307 is the code for redirection
     res.writeHead(307, { 'Location': link.url });
     res.end();
