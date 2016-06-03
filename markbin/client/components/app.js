@@ -1,7 +1,11 @@
 import React from 'react';
 
+import Header from './header';
+
 export default () => {
   return (
-    <div>MarkBin!!</div>
+    <div>
+      <Header />
+    </div>
   );
 }
