@@ -8,8 +8,10 @@ class Header extends Component {
   onBinClick(event) {
     event.preventDefault();
     Meteor.call('bins.insert', (error, binId) => {
-      const url = `/bins/${binId}`;
-      browserHistory.push(url);
+      if (!error) {
+        const url = `/bins/${binId}`;
+        browserHistory.push(url);
+      }
     });
   }
 
