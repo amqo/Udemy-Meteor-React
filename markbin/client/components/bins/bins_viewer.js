@@ -4,6 +4,10 @@ import { markdown } from 'markdown';
 class BinsViewer extends Component {
   render() {
 
+    if (!this.props.bin) {
+      return <div></div>
+    }
+
     const rawHTML = markdown.toHTML(this.props.bin.content);
 
     return (

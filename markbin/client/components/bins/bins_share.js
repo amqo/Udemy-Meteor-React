@@ -8,6 +8,11 @@ class BinsShare extends Component {
   }
 
   renderShareList() {
+
+    if (!this.props.bin) {
+      return <div></div>
+    }
+
     return (
       this.props.bin.sharedWith.map(email => {
         return <button key={ email }
